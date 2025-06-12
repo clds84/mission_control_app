@@ -58,7 +58,7 @@ while True:
     # Handle button toggle logic
     if not led_encoder_button.value and led_encoder_button_state is None:
         keyboard.press(Keycode.F)
-        time.sleep(0.5)
+        time.sleep(0.2)
         keyboard.release(Keycode.F)
         led_encoder_button_state = "pressed"
         led_encoder.position = 0
@@ -68,7 +68,7 @@ while True:
             
     elif not led_encoder_button.value and led_encoder_button_state == "pressed":
         keyboard.press(Keycode.F)
-        time.sleep(0.5)
+        time.sleep(0.2)
         keyboard.release(Keycode.F)
         led_encoder_button_state = None
         led_encoder.position = 0
@@ -86,12 +86,12 @@ while True:
 
             if delta > 0:
                 for _ in range(delta):
-                    keyboard.press(Keycode.H)
-                    keyboard.release(Keycode.H)
-            else:
-                for _ in range(-delta):
                     keyboard.press(Keycode.G)
                     keyboard.release(Keycode.G)
+            else:
+                for _ in range(-delta):
+                    keyboard.press(Keycode.H)
+                    keyboard.release(Keycode.H)
             for i, led in enumerate(leds):
                 led.value = i  >= position
             led_encoder_last_position = position
