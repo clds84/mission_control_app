@@ -1,0 +1,14 @@
+[Unit]
+Description=battery gauge script
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 %h/mission_control/battery_status.py
+WorkingDirectory=%h/mission_control
+StandardOutput=journal
+StandardError=journal
+Restart=always
+
+[Install]
+WantedBy=default.target
+
